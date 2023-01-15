@@ -3,6 +3,10 @@ import { useState } from 'react';
 import { FortunePicker } from './components/FortunePicker';
 
 const App = () => {
+  function generateFortune() {
+    alert('it will rain tomorrow');
+  }
+
   return (
     <Container maxW='7xl' marginTop={4}>
       <Box>
@@ -13,7 +17,7 @@ const App = () => {
         >
           Tarot App
         </Text>
-        <FortunePicker />
+        <FortunePicker onClick={generateFortune} />
       </Box>
     </Container>
   );
