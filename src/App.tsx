@@ -1,5 +1,7 @@
-import { Container, Box, Text } from '@chakra-ui/react';
-import { useState } from 'react';
+import React from 'react';
+
+import { ChakraProvider, Container, Box, Text } from '@chakra-ui/react';
+
 import { FortunePicker } from './components/FortunePicker';
 
 const App = () => {
@@ -8,18 +10,20 @@ const App = () => {
   }
 
   return (
-    <Container maxW='7xl' marginTop={4}>
-      <Box>
-        <Text
-          fontSize={{ base: '3xl', lg: '5xl' }}
-          textAlign='center'
-          fontWeight='bold'
-        >
-          Tarot App
-        </Text>
-        <FortunePicker onClick={generateFortune} />
-      </Box>
-    </Container>
+    <ChakraProvider>
+      <Container maxW='7xl' marginTop={4}>
+        <Box>
+          <Text
+            fontSize={{ base: '3xl', lg: '5xl' }}
+            textAlign='center'
+            fontWeight='bold'
+          >
+            Tarot App
+          </Text>
+          <FortunePicker onClick={generateFortune} />
+        </Box>
+      </Container>
+    </ChakraProvider>
   );
 };
 
