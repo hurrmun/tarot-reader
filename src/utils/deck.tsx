@@ -47,13 +47,41 @@
 //   'The World',
 // ];
 
-// export const createDeck = (): Card[] => {
-//   let deck: Card[] = [];
+export const createDeck = () => {
+  const deck = [...fullDeck];
 
-//   return deck;
-// };
+  return deck;
+};
 
-export const fullDeck = [
+class Deck {
+  //? shouldn't need a constructor unless passing in custom deck
+  //   constructor(private deck: Card[]) {}
+
+  //? initialise with a copy of fullDeck
+  deck: Card[] = [...fullDeck];
+  removed: Card[] = [];
+
+  public getRandomCard(): Card {
+    const randomIndex = Math.floor(Math.random() * this.deck.length);
+    const selected = this.deck.splice(randomIndex, 1)[0];
+    this.removed.push(selected);
+
+    return selected;
+  }
+}
+
+interface Card {
+  title: string;
+  arcana: 'major' | 'minor';
+  image: string;
+  description: {
+    upright: string;
+    reversed: string;
+  };
+  link: string;
+}
+
+export const fullDeck: Card[] = [
   {
     title: '0 The Fool',
     arcana: 'major',
