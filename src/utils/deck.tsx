@@ -53,20 +53,27 @@ export const createDeck = () => {
   return deck;
 };
 
-class Deck {
+export class Deck {
   //? shouldn't need a constructor unless passing in custom deck
   //   constructor(private deck: Card[]) {}
 
   //? initialise with a copy of fullDeck
   deck: Card[] = [...fullDeck];
-  removed: Card[] = [];
+  chosenCards: Card[] = [];
 
-  public getRandomCard(): Card {
+  //* Removes a random card from deck and adds to selected array
+  public drawCard(): Card {
+    console.log('deck before', this.deck);
+
     const randomIndex = Math.floor(Math.random() * this.deck.length);
-    const selected = this.deck.splice(randomIndex, 1)[0];
-    this.removed.push(selected);
+    const selectedCard = this.deck.splice(randomIndex, 1)[0];
+    this.chosenCards.push(selectedCard);
 
-    return selected;
+    console.log('selected', selectedCard);
+    console.log('deck after', this.deck);
+    console.log('removed', this.chosenCards);
+
+    return selectedCard;
   }
 }
 

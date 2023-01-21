@@ -3,11 +3,16 @@ import React from 'react';
 import { ChakraProvider, Container, Box, Text } from '@chakra-ui/react';
 
 import { FortunePicker } from './components/FortunePicker';
+import { Deck } from './utils/deck';
 
 const App = () => {
   function generateFortune() {
     alert('it will rain tomorrow');
   }
+
+  //* For testing
+  const deck = new Deck();
+  deck.drawCard();
 
   return (
     <ChakraProvider>
