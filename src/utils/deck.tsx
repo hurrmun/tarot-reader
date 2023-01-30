@@ -63,21 +63,21 @@ export class Deck {
 
   //* Removes a random card from deck and adds to selected array
   public drawCard(): Card {
-    console.log('deck before', this.deck);
+    // console.log('deck before', this.deck);
 
     const randomIndex = Math.floor(Math.random() * this.deck.length);
     const selectedCard = this.deck.splice(randomIndex, 1)[0];
     this.chosenCards.push(selectedCard);
 
-    console.log('selected', selectedCard);
-    console.log('deck after', this.deck);
-    console.log('removed', this.chosenCards);
+    // console.log('selected', selectedCard);
+    // console.log('deck after', this.deck);
+    // console.log('removed', this.chosenCards);
 
     return selectedCard;
   }
 }
 
-interface Card {
+export interface Card {
   title: string;
   arcana: 'major' | 'minor';
   image: string;

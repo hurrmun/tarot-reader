@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { ChakraProvider, Container, Box, Text } from '@chakra-ui/react';
 
 import { FortunePicker } from './components/FortunePicker';
-import { Deck } from './utils/deck';
+import { Card, Deck } from './utils/deck';
 
 const App = () => {
-  function generateFortune() {
-    alert('it will rain tomorrow');
-  }
+  const [deck, setDeck] = useState(new Deck());
+  const [selectedCards, setSelectedCards] = useState<Card[]>([]);
 
-  //* For testing
-  const deck = new Deck();
-  deck.drawCard();
+  function generateFortune() {
+    // alert('it will rain tomorrow');
+    // setSelectedCards((prev) => [deck.drawCard(), ...prev]);
+    const drawn = deck.drawCard();
+    setSelectedCards((prev) => [drawn, ...prev]);
+
+    console.log('selected', selectedCards);
+    console.log('deck', deck);
+  }
 
   return (
     <ChakraProvider>
@@ -26,6 +31,13 @@ const App = () => {
             Tarot App
           </Text>
           <FortunePicker onClick={generateFortune} />
+          <Box>
+            <>
+              {selectedCards.map((card) => {
+                return <Text key={card.title}>{card.title}</Text>;
+              })}
+            </>
+          </Box>
         </Box>
       </Container>
     </ChakraProvider>
