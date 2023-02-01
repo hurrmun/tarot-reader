@@ -8,12 +8,15 @@ import { Card, Deck } from './utils/deck';
 const App = () => {
   const [deck, setDeck] = useState(new Deck());
   const [selectedCards, setSelectedCards] = useState<Card[]>([]);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   function generateFortune() {
-    // alert('it will rain tomorrow');
-    // setSelectedCards((prev) => [deck.drawCard(), ...prev]);
-    const drawn = deck.drawCard();
-    setSelectedCards((prev) => [drawn, ...prev]);
+    const drawn: Card[] = [];
+    for (let i = 0; i < 3; i++) {
+      drawn.push(deck.drawCard());
+    }
+    setSelectedCards((prev) => [...drawn]);
+    setButtonDisabled(true);
 
     console.log('selected', selectedCards);
     console.log('deck', deck);
@@ -30,7 +33,7 @@ const App = () => {
           >
             Tarot App
           </Text>
-          <FortunePicker onClick={generateFortune} />
+          <FortunePicker onClick={generateFortune} disabled={buttonDisabled} />
           <Box>
             <>
               {selectedCards.map((card) => {
