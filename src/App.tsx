@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-import { ChakraProvider, Container, Box, Text } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+  Container,
+  Box,
+  Text,
+  HStack,
+  Button,
+} from '@chakra-ui/react';
 
 import { FortunePicker } from './components/FortunePicker';
 import { Card, Deck } from './utils/deck';
@@ -33,13 +40,18 @@ const App = () => {
           >
             Tarot App
           </Text>
-          <FortunePicker onClick={generateFortune} disabled={buttonDisabled} />
+          <FortunePicker
+            onClick={generateFortune}
+            disabled={buttonDisabled}
+            showReset={true}
+            resetFn={() => ''}
+          />
           <Box>
-            <>
+            <HStack justifyContent='center' spacing={16} marginTop={16}>
               {selectedCards.map((card) => {
                 return <Text key={card.title}>{card.title}</Text>;
               })}
-            </>
+            </HStack>
           </Box>
         </Box>
       </Container>

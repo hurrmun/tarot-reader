@@ -1,15 +1,22 @@
 import React from 'react';
 
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, HStack } from '@chakra-ui/react';
 
 export interface FortunePickerProps {
   onClick: () => void;
   disabled: boolean;
+  resetFn: () => void;
+  showReset: boolean;
 }
 
-export const FortunePicker = ({ onClick, disabled }: FortunePickerProps) => {
+export const FortunePicker = ({
+  onClick,
+  disabled,
+  resetFn,
+  showReset,
+}: FortunePickerProps) => {
   return (
-    <Box display='flex' justifyContent='center' marginTop={4}>
+    <HStack display='flex' justifyContent='center' marginTop={4} spacing={2}>
       <Button
         colorScheme='teal'
         variant='solid'
@@ -18,6 +25,7 @@ export const FortunePicker = ({ onClick, disabled }: FortunePickerProps) => {
       >
         Generate Fortune
       </Button>
-    </Box>
+      {showReset && <Button colorScheme='red'>Reset</Button>}
+    </HStack>
   );
 };
