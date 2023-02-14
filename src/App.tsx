@@ -15,7 +15,9 @@ import { Card, Deck } from './utils/deck';
 const App = () => {
   const [deck, setDeck] = useState(new Deck());
   const [selectedCards, setSelectedCards] = useState<Card[]>([]);
+
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [showReset, setShowReset] = useState(false);
 
   function generateFortune() {
     const drawn: Card[] = [];
@@ -24,9 +26,17 @@ const App = () => {
     }
     setSelectedCards((prev) => [...drawn]);
     setButtonDisabled(true);
+    setShowReset(true);
 
     console.log('selected', selectedCards);
     console.log('deck', deck);
+  }
+
+  function resetFortune() {
+    setDeck(new Deck());
+    setSelectedCards([]);
+    setButtonDisabled(false);
+    setShowReset(false);
   }
 
   return (
@@ -41,10 +51,10 @@ const App = () => {
             Tarot App
           </Text>
           <FortunePicker
-            onClick={generateFortune}
+            generateFortune={generateFortune}
             disabled={buttonDisabled}
-            showReset={true}
-            resetFn={() => ''}
+            showReset={showReset}
+            resetFn={resetFortune}
           />
           <Box>
             <HStack justifyContent='center' spacing={16} marginTop={16}>

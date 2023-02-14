@@ -12,6 +12,11 @@ export default {
 
 export const Primary: ComponentStory<typeof FortunePicker> = () => (
   <ChakraProvider>
-    <FortunePicker onClick={() => alert('test')} />
+    <FortunePicker
+      showReset={false}
+      resetFn={() => alert('reset')}
+      generateFortune={() => alert('test')}
+      disabled={false}
+    />
   </ChakraProvider>
 );
