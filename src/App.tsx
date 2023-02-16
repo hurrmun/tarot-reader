@@ -11,6 +11,7 @@ import {
 
 import { FortunePicker } from './components/FortunePicker';
 import { Card, Deck } from './utils/deck';
+import { Table } from './components/Table';
 
 const App = () => {
   const [deck, setDeck] = useState(new Deck());
@@ -57,11 +58,7 @@ const App = () => {
             resetFn={resetFortune}
           />
           <Box>
-            <HStack justifyContent='center' spacing={16} marginTop={16}>
-              {selectedCards.map((card) => {
-                return <Text key={card.title}>{card.title}</Text>;
-              })}
-            </HStack>
+            <Table selectedCards={selectedCards} />
           </Box>
         </Box>
       </Container>
