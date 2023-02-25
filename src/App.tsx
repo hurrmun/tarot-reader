@@ -57,9 +57,7 @@ const App = () => {
             showReset={showReset}
             resetFn={resetFortune}
           />
-          <Box>
-            <Table selectedCards={selectedCards} />
-          </Box>
+          <Table selectedCards={selectedCards} />
         </Box>
       </Container>
     </ChakraProvider>
