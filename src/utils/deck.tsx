@@ -1,5 +1,7 @@
 // type Suits = 'major' | 'cups' | 'wands' | 'swords' | 'pentacles';
 
+import { gptDeck } from './gptDeck';
+
 // interface Card {
 //   suit: Suits;
 //   rank: number;
@@ -47,18 +49,18 @@
 //   'The World',
 // ];
 
-export const createDeck = () => {
-  const deck = [...fullDeck];
+// export const createDeck = () => {
+//   const deck = [...fullDeck];
 
-  return deck;
-};
+//   return deck;
+// };
 
 export class Deck {
   //? shouldn't need a constructor unless passing in custom deck
   //   constructor(private deck: Card[]) {}
 
   //? initialise with a copy of fullDeck
-  deck: Card[] = [...fullDeck];
+  deck: Card[] = [...gptDeck];
   chosenCards: Card[] = [];
 
   //* Removes a random card from deck and adds to selected array
@@ -79,13 +81,13 @@ export class Deck {
 
 export interface Card {
   title: string;
-  arcana: 'major' | 'minor';
-  image: string;
+  arcana: string;
+  image?: string;
   description: {
     upright: string;
     reversed: string;
   };
-  link: string;
+  link?: string;
 }
 
 export const fullDeck: Card[] = [

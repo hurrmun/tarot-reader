@@ -25,8 +25,12 @@ export const Table = ({ selectedCards }: TableProps) => {
               <Heading size='md'>{card.title}</Heading>
             </CardHeader>
             <CardBody>
-              <Text>Arcana: {card.arcana}</Text>
-              <Text>{card.description.upright}</Text>
+              <Text>
+                <Text as='b'>Arcana:</Text> {card.arcana}
+              </Text>
+              <Text>
+                <Text as='b'>Meaning:</Text> {card.description.upright}
+              </Text>
             </CardBody>
           </ChakraCard>
         );
